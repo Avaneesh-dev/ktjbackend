@@ -9,6 +9,7 @@ const Compe = require("./db/compe");
 const Appl = require("./db/applications")
 const auth = require("./auth");
 const Heroform = require("./db/heroform");
+const contactform = require("./db/contactform");
 dbConnect();
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -208,8 +209,28 @@ app.put("/appls/:applid",auth, (req, res) => {
     .catch((err) => next(err));
   })
 })
+app.get("/GDform", (req, res) =>{
+  Heroform.find({})
+  .then((competitions)=> {
+    res.statusCode=200;
+    res.json(competitions)
+  });})
 app.post("/GDform", (req, res) => {
   Heroform.create(req.body)
+  .then((appl)=> {
+    res.statusCode =200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json(appl);
+  });
+});
+app.get("/contactform", (req, res) =>{
+  contactform.find({})
+  .then((competitions)=> {
+    res.statusCode=200;
+    res.json(competitions)
+  });})
+app.post("/contactform", (req, res) => {
+  contactform.create(req.body)
   .then((appl)=> {
     res.statusCode =200;
     res.setHeader('Content-Type', 'application/json');
