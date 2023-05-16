@@ -10,9 +10,9 @@ const HeroformSchema =new mongoose.Schema({
     height:  {type: String, required:true},
     weight:  {type: String, required:true},
     gender:  {type: String, required:true},
-    foodHabits: {type: Array, required:true},
-    bodyTarget: {type: Array, required:true},
-    activities: {type: Array, required:true},
+    foodHabits: [{ type: String }],
+    bodyTarget: [{ type: String }],
+    activities: [{ type: String }],
     frequency: {type: String, required:true},
     phone: {type: String, required:true},
     email: {type: String, required:true}
