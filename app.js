@@ -8,6 +8,7 @@ const User = require("./db/user");
 const Compe = require("./db/compe");
 const Appl = require("./db/applications")
 const auth = require("./auth");
+const Heroform = require("./db/heroform");
 dbConnect();
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -207,5 +208,13 @@ app.put("/appls/:applid",auth, (req, res) => {
     .catch((err) => next(err));
   })
 })
+app.post("/GDform", (req, res) => {
+  Heroform.create(req.body)
+  .then((appl)=> {
+    res.statusCode =200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json(appl);
+  });
+});
 
 module.exports = app;
