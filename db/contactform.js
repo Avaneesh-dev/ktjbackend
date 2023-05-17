@@ -17,8 +17,8 @@ const ContactFormSchema =new mongoose.Schema({
     },
     
     canWeConnect:{
-        type: String,
-        default: "no, don't contact me"
+        type: Boolean,
+        required:true
     },
     timeslot:{
         type:String,
