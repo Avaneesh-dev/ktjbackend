@@ -27,8 +27,9 @@ const ContactFormSchema =new mongoose.Schema({
     feedback:{
         type:String,
         required:true,
-    }
-})
+    }}, {
+        timestamps: true
+    })
 
 module.exports= mongoose.model.ContactForms ||
 mongoose.model("ContactForm", ContactFormSchema);
